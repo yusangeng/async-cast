@@ -9,7 +9,7 @@
  * @return {Function} 输出函数
  * @export
  */
-export default function asyncCast (fn) {
+module.exports = function asyncCast (fn) {
   if (typeof fn !== 'function') {
     throw new TypeError('fn is NOT a function.')
   }
