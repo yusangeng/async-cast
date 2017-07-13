@@ -15,8 +15,12 @@ module.exports = function asyncCast (fn) {
   }
 
   function asyncFn () {
-    const args = Array.prototype.slice.call(arguments)
-    setTimeout(() => fn.apply(this, args), 0)
+    var args = Array.prototype.slice.call(arguments)
+    var self = this
+
+    setTimeout(function () {
+      fn.apply(self, args)
+    }, 0)
   }
 
   // for debug
