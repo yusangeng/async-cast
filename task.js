@@ -5,7 +5,7 @@
  */
 
 // FIXME: 会污染全局环境
-import 'setimmediate'
+require('setimmediate')
 
 var g = typeof self === 'undefined' ? (typeof global === 'undefined' ? this : global) : self
 var doc = g.document
