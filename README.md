@@ -15,14 +15,22 @@ npm install async-cast --save
 ### 使用
 
 ``` js
-var asyncCast = require('async-cast')
+var asynchronize = require('async-cast')
 
 function syncFn() {
   console.log('bar')
 }
 
-var asyncFn = asyncCast(syncFn)
+var asyncFn = asynchronize(syncFn)
 
 asyncFn()
 oonsole.log('foo')
+
+// Micro Task 模式
+
+var asyncFn = asynchronize(syncFn, true)
+
+asyncFn()
+oonsole.log('foo')
+
 ```
