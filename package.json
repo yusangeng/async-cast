@@ -1,6 +1,6 @@
 {
   "name": "async-cast",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Transfer a function to an async function.",
   "repository": {
     "url": "https://github.com/yusangeng/async-cast.git"
@@ -13,5 +13,7 @@
   },
   "license": "MIT",
   "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "setimmediate": "^1.0.5"
+  }
 }

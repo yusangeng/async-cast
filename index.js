@@ -1,30 +1,27 @@
 /**
- * @file 将函数转化为异步函数
+ * 将函数转化为异步函数
+ *
  * @author Y3G
  */
 
+var task = require('./task')
+
 /**
  * 将函数转化为异步函数
- * @param  {Function} fn 输入函数
+ *
+ * @param {Function} fn 输入函数
+ * @param {boolean} useMicroTask 是否使用MicroTask方式
  * @return {Function} 输出函数
- * @export
  */
-module.exports = function asyncCast (fn) {
+module.exports = function asynchronize (fn, useMicroTask) {
   if (typeof fn !== 'function') {
     throw new TypeError('fn is NOT a function.')
   }
 
-  function asyncFn () {
-    var args = Array.prototype.slice.call(arguments)
-    var self = this
-
-    setTimeout(function () {
-      fn.apply(self, args)
-    }, 0)
-  }
+  var ret = useMicroTask ? task.microTask(fn) : task.macroTask(fn)
 
   // for debug
-  asyncFn.originalFunction = fn
+  ret.originalFunction = fn
 
-  return asyncFn
+  return ret
 }
